@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage("Delivery") {
             steps {
-                sh 'docker-compose up -d'
+                sh 'scp -r * root@localhost Desktop/TP_PD/'
             }
         }
     }
