@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage("Delivery") {
             steps {
-                sh 'scp -o StrictHostKeyChecking=no -rp * root@127.0.0.1:/Desktop/TP_PD/'
+               // sh 'scp -o StrictHostKeyChecking=no -rp * root@127.0.0.1:/Desktop/TP_PD/'
+               sh 'docker compose up -d'
             }
         }
     }
