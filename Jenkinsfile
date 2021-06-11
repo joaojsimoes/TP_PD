@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage("Delivery") {
             steps {
-                sh 'scp -r * root@localhost /Desktop/TP_PD/'
+                sh 'scp -o StrictHostKeyChecking=no -rp * root@localhost:/Desktop/TP_PD/'
             }
         }
     }
