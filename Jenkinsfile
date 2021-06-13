@@ -6,7 +6,7 @@ pipeline {
                 git 'https://github.com/joaojsimoes/RestAPI_PD.git'
             }
         }
-        stage("Build") {
+        stage("Build BackEnd") {
         steps {
            npm 'install'
             }
