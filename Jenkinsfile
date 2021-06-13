@@ -17,7 +17,7 @@ pipeline {
                 git 'https://github.com/joaojsimoes/WebClient_PD.git'
             }
         }
-        stage("Build") {
+        stage("Build FrontEnd") {
             steps{
                 npm 'install'
                 npm 'build'
