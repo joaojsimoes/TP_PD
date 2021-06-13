@@ -10,18 +10,6 @@ pipeline {
         steps {
            npm 'install'
             }
-        } 
-        
-        stage("CheckOut FrontEnd") {
-            steps {
-                git 'https://github.com/joaojsimoes/WebClient_PD.git'
-            }
-        }
-        stage("Build FrontEnd") {
-            steps{
-                npm 'install'
-                npm 'build'
-            }
-        } 
+        }        
     }
 }
