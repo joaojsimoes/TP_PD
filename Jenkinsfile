@@ -11,7 +11,7 @@ pipeline {
                 sh 'npm install'
             }
         steps {
-            sh "echo \"from shell""
+            echo "Hello World!"
             }
         } 
     }
