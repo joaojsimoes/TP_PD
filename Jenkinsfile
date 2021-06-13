@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage("CheckOut repositores") {
             steps {
-                git 'https://github.com/joaojsimoes/RestAPI_PD'
+                git 'https://github.com/joaojsimoes/RestAPI_PD.git'
             }
         }
         stage("Build BackEnd") {
