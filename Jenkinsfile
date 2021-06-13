@@ -7,7 +7,6 @@ pipeline {
         }
         stage("Build FrontEnd") {
         steps {
-            scripts{
                 def defineEnvironment() {
                     def branchName = "${env.BRANCH_NAME}"
                     if (branchName == "master") {
@@ -19,7 +18,7 @@ pipeline {
                 }
                 git url: 'https://github.com/joaojsimoes/WebClient_PD.git'
                 
-            }
+            
             }
         }
         stage("Build BackEnd") {
