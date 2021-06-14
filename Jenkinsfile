@@ -19,6 +19,7 @@ pipeline {
         }
         stage('Push Images') {
             steps {
+               sh 'docker login -u "tppd2021" -p "tppd2021_" docker.io'                
                sh 'docker push tppd2021/web_client'
                sh 'docker push tppd2021/rest_api'
             }
