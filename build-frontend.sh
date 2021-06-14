@@ -7,6 +7,6 @@ echo 'NPM INSTALL'
 npm run-script build
 
 echo 'Docker Build image'
-docker build -t web_client .
+docker build . -t joaofsimoes/tp_pd:web_client 
 
 cd ..
