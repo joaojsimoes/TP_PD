@@ -1,6 +1,5 @@
 pipeline {
     agent any
-    tools {nodejs "node-10.17"}
     stages {
         stage("CheckOut repositores") {
             steps {
@@ -10,7 +9,7 @@ pipeline {
         }
         stage("Build BackEnd") {
             steps {
-               sh 'npm install'
+               npm install
             }
         }        
     }
