@@ -35,7 +35,7 @@ services:
       - mongo-compose-network
   rest_api:
     container_name: "rest_api"
-    image: "rest_api"
+    image: "tppd2021/rest_api"
     ports:
       - "4000:4000"
     networks:
@@ -44,7 +44,7 @@ services:
       - mongo
   web_client:
     container_name: "web_client"
-    image: "web_client"
+    image: "tppd2021/web_client"
     ports:
       - "3000:80"
 
