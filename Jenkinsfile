@@ -1,39 +1,15 @@
 pipeline {
     agent any
     stages {
-<<<<<<< Updated upstream
-        stage("CheckOut repositores") {
+        stage("Create Image Frontend") {
             steps {
-                git branch: 'main',
-                     url: 'https://github.com/joaojsimoes/RestAPI_PD.git'
+                sh 'sh build-frontend.sh'
             }
         }
-        stage("Build BackEnd") {
+       stage("Create Image Backend") {
             steps {
-                 withNPMWrapper('MyCredential') {
-                    npm 'install'
-                }
-=======
-        stage("Checkout repositories") {
-            steps {
-               
+                sh 'sh build-backend.sh'
             }
-        }
-        stage("Build frontend") {
-            steps {
-              
-            }
-        }
-        stage("Build backend") {
-            steps {
-              
-            }
-        }
-        stage("Create Image and Publish") {
-            steps {
-              
->>>>>>> Stashed changes
-            }
-        }        
+        }     
     }
 }
