@@ -17,5 +17,11 @@ pipeline {
                sh 'sh build-frontend.sh'
             }
         }
+        stage('Push Images') {
+            steps {
+               sh 'docker push joaofsimoes/web_client_tp_pd'
+               sh 'docker push joaofsimoes/rest_api_tp_pd'
+            }
+        }
     }
 }
