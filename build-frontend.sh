@@ -1,9 +1,12 @@
 cd frontend
 
-rm -r build node_modules
-
+echo 'NPM INSTALL'
 npm install
 
+echo 'NPM INSTALL'
 npm run-script build
 
+echo 'Docker Build image'
 docker build -t web_client .
+
+cd ..

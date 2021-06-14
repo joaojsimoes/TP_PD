@@ -1,5 +1,6 @@
 cd backend
 
-rm -r node_modules
-
+echo 'Docker Image rest_api'
 docker build -t rest_api .
+
+cd ..

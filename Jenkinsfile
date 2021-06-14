@@ -1,15 +1,21 @@
 pipeline {
     agent any
+    tools {nodejs "nodejs"}
     stages {
-        stage("Create Image Frontend") {
+        /*stage('Cloning Git') {
             steps {
-                sh 'sh build-frontend.sh'
+                git url:'https://github.com/joaojsimoes/TP_PD',branch: 'main'
+            }
+        }*/
+        stage('Build Backend') {
+            steps {
+               sh 'sh build-backend.sh'
             }
         }
-       stage("Create Image Backend") {
+        stage('Build Frontend') {
             steps {
-                sh 'sh build-backend.sh'
+               sh 'sh build-frontend.sh'
             }
-        }     
+        }
     }
 }
