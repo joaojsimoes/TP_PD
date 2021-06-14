@@ -19,8 +19,8 @@ pipeline {
         }
         stage('Push Images') {
             steps {
-               sh 'docker push joaofsimoes/web_client_tp_pd'
-               sh 'docker push joaofsimoes/rest_api_tp_pd'
+               sh 'docker push tppd2021/web_client'
+               sh 'docker push tppd2021/rest_api'
             }
         }
     }
