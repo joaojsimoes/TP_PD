@@ -35,7 +35,7 @@ services:
       - mongo-compose-network
   rest_api:
     container_name: "rest_api"
-    build: ./backend/
+    image: "rest_api"
     ports:
       - "4000:4000"
     networks:
@@ -46,7 +46,7 @@ services:
     container_name: "web_client"
     image: "web_client"
     ports:
-      - "80:80"
+      - "3000:80"
 
 
     
