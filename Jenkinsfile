@@ -10,7 +10,7 @@ pipeline {
         stage("Build BackEnd") {
             steps {
                  withNPMWrapper('MyCredential') {
-                    npm command: 'install'
+                    npm 'install'
                 }
             }
         }        
