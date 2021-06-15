@@ -1,0 +1,48 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Install aptitude using apt
+      apt: name=aptitude state=latest update_cache=yes force_apt_get=yes
+
+    - name: Install required system packages
+      apt: name={{ item }} state=latest update_cache=yes
+      loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common']
+           
+    - name: Pull Image Mongo
+      command: docker pull mongo
+
+    - name: Pull Image Mongo Express
+      command: docker pull mongo-express
+
+    - name: Pull Image Web Client
+      command: docker pull tppd2021/web_client
+
+    - name: Pull Image Rest API
+      command: docker pull tppd2021/rest_api
+
+    - name: Remove Network
+      command: docker network rm mongo-network
+
+    - name: Create Network
+      command: docker network create -d bridge mongo-network
+
+    - name: Remove Volume for Mongo
+      command: docker volume rm MongoDB
+
+    - name: Create Volume for Mongo
+      command: docker volume create MongoDB
+
+    - name: Create Container Mongo
+      command: docker run -d --network mongo-network --name mongo -p 27017:27017 -v MongoDB:/data/db -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin mongo
+
+    - name: Create Container Mongo Express
+      command: "docker run -d --network mongo-network --name mongo-express -p 8081:8081 -e ME_CONFIG_BASICAUTH_USERNAME=admin -e ME_CONFIG_BASICAUTH_PASSWORD=admin -e ME_CONFIG_MONGODB_PORT=27017 -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=admin --link mongo mongo-express"
+
+    - name: Create Container REST API
+      command: docker run -d --network mongo-network --name rest_api -p 4000:4000 --link mongo tppd2021/rest_api
+
+    - name: Create Container WEB_CLIENT
+      command: docker run -d --name web_client -p 3000:80 tppd2021/web_client
+
+
