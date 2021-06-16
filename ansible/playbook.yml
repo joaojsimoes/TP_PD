@@ -8,7 +8,7 @@
     - name: Install required system packages
       apt: name={{ item }} state=latest update_cache=yes
       loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common']
-           
+                 
     - name: Pull Image Mongo
       command: docker pull mongo
 
@@ -20,6 +20,18 @@
 
     - name: Pull Image Rest API
       command: docker pull tppd2021/rest_api
+
+    - name: Stop and Remove Container Web Client
+      command: docker rm -f web_client
+
+    - name: Stop and Remove Container Rest Api
+      command: docker rm -f rest_api
+
+    - name: Stop and Remove Container Mongo Express
+      command: docker rm -f mongo-express
+
+    - name: Stop and Remove Container Mongo
+      command: docker rm -f mongo
 
     - name: Remove Network
       command: docker network rm mongo-network
